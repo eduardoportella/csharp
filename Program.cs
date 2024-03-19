@@ -1,17 +1,30 @@
-﻿Console.Write("Digite seu nome: ");
-string nome = Console.ReadLine();
+﻿class Program
+{
+   static void Main(){
+      string[] names = ["Eduardo", "Joao"];
 
-Console.WriteLine($"Olá, {nome}");
+      // Console.WriteLine(a[0]);
 
-Console.Write("Digite o ano do seu nascimento: ");
-int year = int.Parse(Console.ReadLine());
+      // for(int i =0; i < names.Length; i++){
+      //    Console.WriteLine(names[i]);
+      // }
 
-int age = 2024-year;
+      if (string.Equals(names[0], "eduardo", StringComparison.OrdinalIgnoreCase)){
+         Console.WriteLine("igual");
+      }
 
-Console.WriteLine($"Você tem {age} anos");
+      Console.WriteLine(names[0].Length);
+      Console.WriteLine(names[0].StartsWith('E'));
+      Console.WriteLine(names[0].Contains("Ed"));
+      Console.WriteLine(names[0].IndexOf('a'));
+      Console.WriteLine(names[0].IndexOf('p'));
+      Console.WriteLine(string.IsNullOrWhiteSpace("  "));
+      Console.WriteLine(string.Join(' ', names));
 
-if (age > 18){
-   Console.WriteLine("Você é maior de idade");
-} else {
-   Console.WriteLine("Você é menor de idade");
+
+      foreach (string name in names){
+         Console.WriteLine(name);
+      }
+   }
 }
+
