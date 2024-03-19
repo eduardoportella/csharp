@@ -1,12 +1,17 @@
-﻿// See https://aka.ms/new-console-template for more information
-using System.Collections.ObjectModel;
+﻿Console.Write("Digite seu nome: ");
+string nome = Console.ReadLine();
 
-Console.WriteLine("Hello, worlddd!");
+Console.WriteLine($"Olá, {nome}");
 
-int i;
-int i2 = i = 10;
+Console.Write("Digite o ano do seu nascimento: ");
+int year = int.Parse(Console.ReadLine());
 
-i = i2 == 42 ? 10 : 20;
+int age = 2024-year;
 
-Console.WriteLine(i2--);
+Console.WriteLine($"Você tem {age} anos");
 
+if (age > 18){
+   Console.WriteLine("Você é maior de idade");
+} else {
+   Console.WriteLine("Você é menor de idade");
+}
