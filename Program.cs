@@ -4,16 +4,20 @@ class Program
 {
    static void Main(){
    //   Run(Multiply);
-      var multiply = delegate (int x, int y) {return x*y;};
-      var sum = delegate (int x, int y) {return x+y;};
-      Run(multiply);
+      // var multiply = (int x, int y) =>  x*y;
+      Run((x,y) => x * y);
+      
+      var sum = (int x, int y) =>  x+y;
       Run(sum);
 
       // Action<string> teste = delegate (string name) {Console.WriteLine($"Olá {name}");};
-      var teste = delegate (string name) {Console.WriteLine($"Olá, {name}");};
+      var teste = (string name) => Console.WriteLine($"Olá, {name}");
 
       teste("Eduardo Portella");
       // Console.WriteLine(multiply(2, 5));
+
+
+      Func<string, bool> checkName = name => name=="Eduardo Portella";
    }
 
    static void Run(Func<int, int, int> calc){
