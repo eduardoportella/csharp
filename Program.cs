@@ -1,29 +1,21 @@
-﻿using Bank;
+﻿using System.Text.Json;
+using System.Text.Json.Serialization;
+using Bank;
 // using Testing;
 
 class Program
 {
    static void Main(){
       BankAccount acc = new BankAccount("Eduardo", 100, new ConsoleLogger());
-      "Eduardo".WriteLine(ConsoleColor.Red);
-      // logger.Test();
-   }
-}
-// namespace Testing {
-namespace System {
-static class Extensions {
-   public static void WriteLine(this string text, ConsoleColor color){
-      Console.ForegroundColor = color;
-      Console.WriteLine(text);
-      Console.ResetColor();
-   }
+        string json = JsonSerializer.Serialize(acc);
 
-   public static int Test(this int number){
-      // "Testando".WriteLine(ConsoleColor.Green);
+        Console.WriteLine(json);
 
-      return 1;
+      BankAccount acc2 = JsonSerializer.Deserialize<BankAccount>(json);
+
+        Console.WriteLine(acc2.Name);
+
    }
-}
 }
 
 
@@ -53,8 +45,11 @@ namespace Bank {
 
    public class BankAccount
    {
-      private string name;
       public readonly ILogger logger;
+
+      public string Name {
+         get; private set;
+      }
 
       public decimal Balance {
          get; private set;
@@ -68,6 +63,12 @@ namespace Bank {
          // } 
       }
 
+
+      [JsonConstructor]
+      public BankAccount(string name, decimal balance) : this(name, balance, new ConsoleLogger()){
+
+      }
+
       public BankAccount(string name, decimal balance, ILogger logger){
          if (string.IsNullOrWhiteSpace(name)){
             // throw new Exception("Nome inválido.");
@@ -76,14 +77,14 @@ namespace Bank {
          if (balance <= 0){
             throw new Exception("Saldo não pode ser negativo");
          }
-         this.name = name;
+         Name = name;
          Balance = balance;
          this.logger = logger;
       }
 
       public void Deposit(decimal amount){
          if (amount <= 0){
-            logger.Log($"Não é possível depositar {amount} na conta de {name}");
+            logger.Log($"Não é possível depositar {amount} na conta de {Name}");
             // throw new ArgumentException("Depósito não pode ser menor ou igual a zero.", nameof(amount));
          }
          Balance += amount;
