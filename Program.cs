@@ -3,36 +3,25 @@
 class Program
 {
    static void Main(){
-      var logger = new FileLogger("mylog.txt");
-      var acc1 = new BankAccount("Eduardo", 1000, logger);
-      var acc2 = new BankAccount("Larissa", 999, logger);
+   //   Run(Multiply);
+      var multiply = delegate (int x, int y) {return x*y;};
+      Console.WriteLine(multiply(2, 5));
+   }
 
-      // List<BankAccount> accounts = new List<BankAccount>(){
-      var accounts = new List<BankAccount>(){
-         acc1,
-         acc2
-      };
-      // accounts.Add(acc1);
-      // accounts.Add(acc2);
-      // accounts.Remove(acc1);
-      // accounts.Remove(acc2);
+   static void Run(Calculate calc){
+      Console.WriteLine(calc(20,30));
+   }
 
-      // List<int> numbers = new List<int>() {1, 2, 3};
+   // static int Multiply(int x, int y){
+   //    return x*y;
+   // }
 
-      // foreach (BankAccount account in accounts){
-      //    Console.WriteLine(account.Balance);
-      // }
-
-      // DataStore<string> store = new DataStore<string>();
-      var store = new DataStore<string>();
-      store.Value = "String";
-      Console.WriteLine(store.Value.Length);
+   static int Sum(int a, int b){
+      return a + b;
    }
 }
 
-class DataStore<T>{
-   public T Value { get; set; }
-}
+delegate int Calculate(int x, int y);
 
 class FileLogger : ILogger
 {
