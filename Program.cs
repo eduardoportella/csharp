@@ -1,30 +1,55 @@
-﻿class Program
+﻿using System.Diagnostics;
+
+class Program
 {
    static void Main(){
-      string[] names = ["Eduardo", "Joao"];
+   
 
-      // Console.WriteLine(a[0]);
+   // int i = 10;
 
-      // for(int i =0; i < names.Length; i++){
-      //    Console.WriteLine(names[i]);
-      // }
+   // if (int.TryParse("asdfadsf", out int result)){
+   //    Console.WriteLine("sucesso");
+   // } else {
+   //    Console.WriteLine("false");
+   // }
+   
+   // Console.WriteLine(result);
 
-      if (string.Equals(names[0], "eduardo", StringComparison.OrdinalIgnoreCase)){
-         Console.WriteLine("igual");
-      }
-
-      Console.WriteLine(names[0].Length);
-      Console.WriteLine(names[0].StartsWith('E'));
-      Console.WriteLine(names[0].Contains("Ed"));
-      Console.WriteLine(names[0].IndexOf('a'));
-      Console.WriteLine(names[0].IndexOf('p'));
-      Console.WriteLine(string.IsNullOrWhiteSpace("  "));
-      Console.WriteLine(string.Join(' ', names));
+   // int i = 10;
+   // long l = 10;
 
 
-      foreach (string name in names){
-         Console.WriteLine(name);
-      }
+   // //Long pode armazenar inteiro
+   // l = i;
+
+   // //Int nao pode receber devido a memoria
+   // // i = l;
+
+   // i = (int)l; //Conversao explicita
+   // string s = l.ToString();
+
+   // Console.WriteLine(i);
+
+   int i = 10;
+   int i2 = i;
+   i = 30;
+   // i2 = 20;
+
+   Test t = new Test();
+   t.X = 12;
+
+   // Test t2 = t; //Aqui eh referencia pra t
+   Test t2 = new Test();
+   t2.X = 20;
+
+   Console.WriteLine(t.X);
+
    }
+}
+
+class Test{
+
+   public int X;
+
 }
 
