@@ -5,10 +5,18 @@ class Program
    static void Main(){
    //   Run(Multiply);
       var multiply = delegate (int x, int y) {return x*y;};
-      Console.WriteLine(multiply(2, 5));
+      var sum = delegate (int x, int y) {return x+y;};
+      Run(multiply);
+      Run(sum);
+
+      // Action<string> teste = delegate (string name) {Console.WriteLine($"Olá {name}");};
+      var teste = delegate (string name) {Console.WriteLine($"Olá, {name}");};
+
+      teste("Eduardo Portella");
+      // Console.WriteLine(multiply(2, 5));
    }
 
-   static void Run(Calculate calc){
+   static void Run(Func<int, int, int> calc){
       Console.WriteLine(calc(20,30));
    }
 
@@ -20,8 +28,6 @@ class Program
       return a + b;
    }
 }
-
-delegate int Calculate(int x, int y);
 
 class FileLogger : ILogger
 {
