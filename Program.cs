@@ -30,19 +30,29 @@ class Program
 
    // Console.WriteLine(i);
 
-   int i = 10;
-   int i2 = i;
+   int? i = 10;
+   // int i2 = i;
    i = 30;
    // i2 = 20;
 
-   Test t = new Test();
-   t.X = 12;
+   // i = null;
 
-   // Test t2 = t; //Aqui eh referencia pra t
-   Test t2 = new Test();
-   t2.X = 20;
+   // i.HasValue;
+   // i.Value;
+   // i.GetValueOrDefault();
 
-   Console.WriteLine(t.X);
+   if (i is not null) {
+      Console.WriteLine("nulo");
+   }
+
+   // Test t = new Test();
+   // t.X = 12;
+
+   // // Test t2 = t; //Aqui eh referencia pra t
+   // Test t2 = new Test();
+   // t2.X = 20;
+
+   // Console.WriteLine(t.X);
 
    }
 }
