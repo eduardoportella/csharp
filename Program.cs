@@ -6,18 +6,26 @@ using Bank;
 class Program
 {
    static void Main(){
-      BankAccount acc = new BankAccount("Eduardo", 100, new ConsoleLogger());
-        string json = JsonSerializer.Serialize(acc);
+      int[] numbers = [1,2,3, 44, 12, 123];
 
-        Console.WriteLine(json);
+      // var query = from number in numbers
+      //             where number < 10
+      //             select number;
 
-      BankAccount acc2 = JsonSerializer.Deserialize<BankAccount>(json);
+      //Pra verificar e iterar, ta chamando o metodo duas vezes. Usar result
 
-        Console.WriteLine(acc2.Name);
+      var query2 = numbers.Where(number => number < 50);
+
+      var result = query2.ToArray();
+
+      Console.WriteLine(query2.Count());
+
+      foreach (var item in result){
+         Console.WriteLine(item.ToString());
+      }
 
    }
 }
-
 
 namespace Bank {
 
