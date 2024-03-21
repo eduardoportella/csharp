@@ -8,21 +8,29 @@ class Program
    static void Main(){
       int[] numbers = [1,2,3, 44, 12, 123];
 
-      // var query = from number in numbers
-      //             where number < 10
-      //             select number;
+      // var n = numbers.First(number => number > 123);
+      // var n = numbers.FirstOrDefault(number => number > 123);
+      var n = numbers.OrderByDescending(number => number);
 
-      //Pra verificar e iterar, ta chamando o metodo duas vezes. Usar result
-
-      var query2 = numbers.Where(number => number < 50);
-
-      var result = query2.ToArray();
-
-      Console.WriteLine(query2.Count());
-
-      foreach (var item in result){
-         Console.WriteLine(item.ToString());
+      foreach (var item in n)
+      {
+         Console.WriteLine(item);
       }
+
+      var accounts = new List<BankAccount>{
+         new BankAccount("Eduardo", 100),
+         new BankAccount("Larissa", 50)
+      };
+
+      var acc = accounts.OrderBy(account => account.Balance).ToArray();
+
+      foreach (var item in acc)
+      {
+         Console.WriteLine(item.Name);
+      }
+
+
+
 
    }
 }
