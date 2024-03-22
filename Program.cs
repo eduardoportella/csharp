@@ -18,21 +18,45 @@ class Program
       }
 
       var accounts = new List<BankAccount>{
-         new BankAccount("Eduardo", 100),
-         new BankAccount("Larissa", 50)
+         new BankAccount("Eduardo", 100) { 
+            Branch = "123"
+         },
+         new BankAccount("Larissa", 50){
+            Branch = "124"
+         }
       };
 
-      var acc = accounts.OrderBy(account => account.Balance).ToArray();
+      var acc = accounts.GroupBy(account => account.Branch);
+      // var acc = accounts.OrderBy(account => account.Balance).ToArray();
 
-      foreach (var item in acc)
+      foreach (var group in acc)
       {
-         Console.WriteLine(item.Name);
+         Console.WriteLine($"Agência: {group.Key}");
+         foreach (var account in group){
+            Console.WriteLine($"{account.Name} possui {account.Balance}");
+         }
+         Console.WriteLine("-------");
       }
 
+      //Classe anonima so funciona get, por razoes obvias
+      var namesQuery = accounts.Select(account => new {
+         // FullName = account.Name,
+         // Branch = account.Branch
+         account.Name,
+         account.Branch
+      });
 
+      var test = Enumerable.Empty<int>();
+
+      Console.WriteLine(namesQuery);
 
 
    }
+}
+
+class BranchCustomer {
+   public string Name { get; set; }
+   public string Branch { get; set; }
 }
 
 namespace Bank {
@@ -62,6 +86,8 @@ namespace Bank {
    public class BankAccount
    {
       public readonly ILogger logger;
+
+      public string Branch;
 
       public string Name {
          get; private set;
